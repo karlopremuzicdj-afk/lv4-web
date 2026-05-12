@@ -1,0 +1,343 @@
+:root {
+  /* Boje filmskih žanrova */
+  --color-akcija: #e74c3c;
+  --color-drama: #8e44ad;
+  --color-komedija: #f1c40f;
+  --color-sf: #3498db;
+  --color-romanticni: #e67e22;
+
+  /* Dimenzije */
+  --chart-size: 320px;
+  --chart-size-mobile: 250px;
+  --hole-size: 140px;
+
+  /* Opći stil */
+  --main-font: Arial, sans-serif;
+  --main-bg: #ffffff;
+  --main-text: #2c3e50;
+  --header-bg: #2c3e50;
+  --header-text: #ffffff;
+  --light-box: #f8f9fa;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: var(--main-font);
+  background-color: var(--main-bg);
+  margin: 20px;
+  line-height: 1.6;
+  color: var(--main-text);
+}
+
+header {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 0 0 10px 0;
+}
+
+header p {
+  margin: 0;
+}
+
+main {
+  margin-top: 20px;
+}
+
+h2,
+h3 {
+  color: var(--main-text);
+}
+
+/* Navigacija */
+.dropdown-nav {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+  margin: 20px 0;
+}
+
+.menu-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-button {
+  display: inline-block;
+  background-color: #2c3e50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.menu-button:hover {
+  background-color: #e74c3c;
+  transform: scale(1.05);
+}
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.menu-list li a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #2c3e50;
+  transition:
+    background-color 0.3s ease,
+    padding-left 0.3s ease;
+}
+
+.menu-list li a:hover {
+  background-color: #fdeaea;
+  padding-left: 22px;
+}
+
+.menu-wrapper:hover .menu-list {
+  display: block;
+}
+
+/* Raspored */
+.chart-section {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.chart-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Donut grafikon za desktop */
+.chart-container {
+  flex: 1;
+}
+
+/* PIE CHART - prikaz na većim ekranima */
+.pie-chart {
+  width: var(--chart-size);
+  height: var(--chart-size);
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--color-akcija) 0% 40%,
+    var(--color-drama) 40% 60%,
+    var(--color-komedija) 60% 80%,
+    var(--color-sf) 80% 90%,
+    var(--color-romanticni) 90% 100%
+  );
+  box-shadow: var(--shadow);
+  animation: growChart 1s ease-out;
+  margin-top: 20px;
+}
+
+/* BAR CHART - skriven na većim ekranima */
+.bar-chart {
+  display: none;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.bar-row {
+  margin-bottom: 16px;
+}
+
+.bar-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #2c3e50;
+}
+
+.bar-track {
+  width: 100%;
+  height: 28px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  animation: growBar 1s ease-out;
+}
+
+.akcija-bar {
+  width: 40%;
+  background-color: var(--color-akcija);
+}
+
+.drama-bar {
+  width: 20%;
+  background-color: var(--color-drama);
+}
+
+.komedija-bar {
+  width: 20%;
+  background-color: var(--color-komedija);
+}
+
+.sf {
+  background-color: var(--color-sf);
+}
+
+.sf-bar {
+  width: 10%;
+  background-color: var(--color-sf);
+}
+
+.romanticni-bar {
+  width: 10%;
+  background-color: var(--color-romanticni);
+}
+
+/* Naslovi za različite veličine ekrana */
+.desktop-chart-title {
+  display: inline;
+}
+
+.mobile-chart-title {
+  display: none;
+}
+
+.chart-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-legend {
+  min-width: 220px;
+}
+
+/* Legenda */
+.chart-legend ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chart-legend li {
+  margin-bottom: 12px;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+
+.akcija {
+  background-color: var(--color-akcija);
+}
+
+.drama {
+  background-color: var(--color-drama);
+}
+
+.komedija {
+  background-color: var(--color-komedija);
+}
+
+.sf {
+  background-color: var(--color-sf);
+}
+
+.romanticni {
+  background-color: var(--color-romanticni);
+}
+
+/* Desktop/Mobile opisi */
+.desktop-chart-text {
+  display: inline;
+}
+
+.mobile-chart-text {
+  display: none;
+}
+
+/* Mobilni prikaz: pie chart umjesto donut chart */
+@media (max-width: 768px) {
+  .chart-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pie-chart {
+    display: none;
+  }
+
+  .bar-chart {
+    display: block;
+  }
+
+  .desktop-chart-title {
+    display: none;
+  }
+
+  .mobile-chart-title {
+    display: inline;
+  }
+}
+
+@keyframes growChart {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+footer {
+  margin-top: 40px;
+  padding: 15px;
+  background-color: var(--light-box);
+  border-radius: 12px;
+  text-align: center;
+}
+
+@keyframes growBar {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.chart-legend .sf {
+  background-color: #3498db !important;
+}
